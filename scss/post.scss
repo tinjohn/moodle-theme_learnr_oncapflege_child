@@ -9,14 +9,14 @@
 #toggled-instrc {
     display: none;
 }
-#loginfrom-toggle-instruction {
+#toggle-instruction {
     display: none;
 }
-#label-loginfrom-toggle-instruction {
+#loginform-label-toggle-instruction {
     width: 100%;
 }
 
-#label-loginfrom-toggle-instruction::after {
+#loginform-label-toggle-instruction::after {
     content: '\f150';
     font-family: 'FontAwesome';
     color: #7A000C;
@@ -24,16 +24,36 @@
     text-align: right;
     font-size: 1.5em;
 }
+#label-toggle-instruction::after {
+    content: '\f150';
+    font-family: 'FontAwesome';
+    color: #7A000C;
+    font-size: 1.5em;
+}
+
 #instrc-short {
+    overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical; 
+}
+#loginform-instrc-short {
     overflow: hidden;
 	display: -webkit-box;
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical; 
 }
   
-#loginfrom-toggle-instruction:checked ~ span {
+#loginform-toggle-instruction:checked ~ span {
     display: block;
 }
-#loginfrom-toggle-instruction:checked ~ #label-loginfrom-toggle-instruction::after {
+#loginform-toggle-instruction:checked ~ #loginform-label-toggle-instruction::after {
+    content: '\f151';
+}
+
+#toggle-instruction:checked ~ span {
+    display: block;
+}
+#toggle-instruction:checked ~ #label-toggle-instruction::after {
     content: '\f151';
 }
