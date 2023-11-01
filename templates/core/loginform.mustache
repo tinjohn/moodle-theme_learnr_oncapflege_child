@@ -171,11 +171,11 @@
         <div class="login-divider"></div>
         <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
             <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
-            <input type="checkbox" id="loginfrom-toggle-instruction">
-            <span id="instrc-short">
+            <input type="checkbox" id="toggle-instruction">
+            <span id="loginform-instrc-short">
                 {{{instructions}}}
             </span>
-            <label id="label-loginfrom-toggle-instruction" for="loginfrom-toggle-instruction"></label>
+            <label id="loginform-label-toggle-instruction" for="toggle-instruction"></label>
         </div>
     {{/hasinstructions}}
     {{#cansignup}}
