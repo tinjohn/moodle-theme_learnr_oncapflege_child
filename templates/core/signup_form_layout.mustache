@@ -12,11 +12,10 @@
 
 
 <div class="signupform">
-    <h1>tinjohnadded</h1>
     <h1 class="login-heading">{{#str}} newaccount {{/str}}</h1>
     {{{formhtml}}}
 </div>
 {{#js}}
-require(['theme_oncapflege/showpassword'], (module) => module.init());
+    require(['theme_oncapflege/showpassword'], (module) => module.init());
 {{/js}}
 
