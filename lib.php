@@ -65,7 +65,8 @@ function theme_oncapflege_get_main_scss_content($theme) {
      $pre = file_get_contents($CFG->dirroot . '/theme/oncapflege/scss/pre.scss');                                                         
      // Post CSS - this is loaded AFTER the main scss but before the extra scss from the setting.                                    
      $post = file_get_contents($CFG->dirroot . '/theme/oncapflege/scss/post.scss');                                                       
+     $wizard = file_get_contents($CFG->dirroot . '/theme/oncapflege/scss/loginformwizard.scss');                                                       
                                                                                                                                      
      // Combine them together.                                                                                                       
-     return $pre . "\n" . $scss . "\n" . $post;                                           
+     return $pre . "\n" . $scss . "\n" . $post . "\n" . $wizard;                                           
 }

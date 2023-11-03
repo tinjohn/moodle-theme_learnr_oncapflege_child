@@ -60,3 +60,9 @@
 #id-password::after {
     content: '\f151';
 }
+
+div[data-fieldtype="password"]::after {
+    font-family: 'FontAwesome';
+    color: #7A000C;
+    content: '\f06e...\f040';
+}
