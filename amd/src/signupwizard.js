@@ -2,16 +2,16 @@ export const init = () => {
     // Create the pagination div and its contents
     const paginationHTML = `
     <div class="pagination">
-    <a class="btn btn-primary hidden" id="prev"><<</a>
-    <a class="btn btn-primary" id="next">>></a>
+    <a class="btn hidden" id="prev"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
+    <a class="btn " id="next"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>    </a>
     </div>
     `;
 
     // Get a reference to the first form element in the document
     const form = document.querySelector('form');
-
+    const signup = document.querySelector('div.signupform');
     // Append the pagination HTML to the form
-    form.insertAdjacentHTML('beforeend', paginationHTML);
+    signup.insertAdjacentHTML('beforeend', paginationHTML);
     // other option.
     // const targetElement = document.querySelector('#fgroup_id_buttonar');
 
@@ -58,10 +58,11 @@ export const init = () => {
     }
     // Create the tab status HTML
     tabStatusHTML += `
+    <span class="helppix"></span>
     </div>
     `;
     // Append the pagination HTML to the form
-    form.insertAdjacentHTML('beforebegin', tabStatusHTML);
+    signup.insertAdjacentHTML('beforebegin', tabStatusHTML);
 
     const tabTargets = document.querySelectorAll('.tab');
 

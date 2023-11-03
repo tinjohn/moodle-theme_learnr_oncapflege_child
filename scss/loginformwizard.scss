@@ -9,6 +9,9 @@
     --button-viscol: #21759b;
   }
 
+  .login-container {
+    width: 100%;
+  }
   .btn:focus-within,
   .form-input:focus-within {
     box-shadow: #f8fafc 0px 0px 0px 2px, #c7d2fe 0px 0px 0px 6px, #0000 0px 1px 2px 0px;
@@ -26,18 +29,20 @@
     // width: 30%;
     // text-align: center;
     // margin: 0 6px;
+    font-size: 2.5rem;
+    //color: var(--color-1);
+    color: var(--button-viscol);
   }
   .tab-status {
-    background: var(--status-btn-bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-image: linear-gradient(to bottom, var(--color-1-hover) 1px,var(--color-1-hover) 1px);
-    background-size: 100% 3px; /* Adjust the height of the line as needed */
+    background-size: 99% 3px; /* Adjust the height of the line as needed */
     background-repeat: no-repeat;
     width: 100%;
     height: 2px; /* Adjust the height of the div as needed */
-    margin: 30px 0px;
+    margin: 0 0 3rem 0;
   }
   .tab-status span {
     appearance: none;
@@ -45,16 +50,47 @@
     border: none;
     border-radius: 50%;
     width: 2rem;
-    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #f5d5d5;
+    font-weight: 900;
+    font-size: 1.2rem;
   }
+
   .tab-status span.active {
     background-color: var(--color-1);
-    color: white;
+    //color: white;
   }
   .hidden {
     display: none !important;
   }
+
+  .tab-status span.helppix {
+    appearance: none;
+    background-color: transparent;
+    background-image:url([[pix:theme_oncapflege|OCP_MoodleSignupHelp]]);
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 0%;
+    width: 14rem;
+    height: 14rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 900;
+    font-size: 1.2rem;
+
+  }
+
+  .helppix {
+    width: 100%;
+    height: 3rem; 
+    background-image:url([[pix:theme_oncapflege|OCP_MoodleAnmeldungProgress]]);
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+}
