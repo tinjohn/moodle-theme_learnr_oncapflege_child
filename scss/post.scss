@@ -61,8 +61,20 @@
     content: '\f151';
 }
 
-div[data-fieldtype="password"]::after {
+#toggle-password {
+   display: none;
+}
+#toggle-password:checked ~ #label-toggle-password::after {
+    content: '\f06e';
+}
+#label-toggle-password::after {
+    content: '\f070';
     font-family: 'FontAwesome';
     color: #7A000C;
-    content: '\f06e...\f040';
+    font-size: 1.5em;
+    margin-left: -1.5em;
+}
+
+.forpassword {
+    display: flex;
 }
