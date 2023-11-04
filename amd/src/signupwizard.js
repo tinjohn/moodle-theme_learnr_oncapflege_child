@@ -1,4 +1,43 @@
+import {eventTypes as formEventTypes} from 'core_form/events';
+
 export const init = () => {
+
+    /**
+     * Function to add list entries based on event messages
+     * @param {any} message
+     * @returns {any}
+     */
+    function addListEntry(message) {
+        const listItem = document.createElement('li');
+        listItem.textContent = message;
+        errorSummaryUl.appendChild(listItem);
+    }
+    /**
+     * Function to remove all list entries based on event messages
+     * @returns {any}
+     */
+    function removeAllListEntries() {
+        const ul = document.querySelector('#formerrorssummary ul'); // Get a reference to the <ul> element
+        // Remove all <li> elements from the <ul>
+        while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+        }
+    }
+
+    /**
+     * Description
+     * @param {any} e
+     * @returns {any}
+     */
+    function fieldValidationFailedListener(e) {
+        const message = e.detail.message;
+        if (message != "") {
+            addListEntry(message);
+            const errorSummary = document.querySelector('#formerrorssummary');
+            errorSummary.classList.remove('hidden');
+        }
+    }
+
     // Create the pagination div and its contents
     const paginationHTML = `
     <div class="pagination">
@@ -12,32 +51,34 @@ export const init = () => {
     const signup = document.querySelector('div.signupform');
     // Append the pagination HTML to the form
     signup.insertAdjacentHTML('beforeend', paginationHTML);
-    // other option.
-    // const targetElement = document.querySelector('#fgroup_id_buttonar');
+    const errorSummaryUl = document.querySelector('#formerrorssummary ul');
 
-    // if (targetElement) {
-    //   // Create a new div element to contain the content
-    //   const newDiv = document.createElement('div');
-    //   newDiv.innerHTML = paginationHTML;
-    //   // Insert the new div before the target element
-    //   targetElement.parentNode.insertBefore(newDiv, targetElement);
-    // }
-
-    // // Create the tab status HTML
-    // const tabStatusHTML = `
-    // <div class="tab-status">
-    // <span class="tab active">1</span>
-    // <span class="tab">2</span>
-    // <span class="tab">3</span>
-    // </div>
-    // `;
+    const submitButton = document.querySelector('input[type="submit"]');
+    submitButton.addEventListener('click', () => {
+         // Remove the event listener
+        form.removeEventListener(formEventTypes.formFieldValidationFailed, fieldValidationFailedListener);
+        const errorSummary = document.querySelector('#formerrorssummary');
+        errorSummary.classList.add('hidden');
+        removeAllListEntries();
+        form.addEventListener(formEventTypes.formFieldValidationFailed, fieldValidationFailedListener);
+    });
 
 
+    // Add the event listener
+//    form.addEventListener(formEventTypes.formFieldValidationFailed, fieldValidationFailedListener);
 
+    // form.addEventListener(formEventTypes.formFieldValidationFailed, e => {
+    //     const message = e.detail.message;
+    //     if(message != "") {
+    //         addListEntry(message);
+    //     }
+    //     const errorSummary = document.querySelector('#formerrorssummary');
+    //     errorSummary.classList.remove('hidden');
+    // });
 
     const previousButton = document.querySelector('#prev');
     const nextButton = document.querySelector('#next');
-//    const submitButton = document.querySelector('#submit');
+    //const submitButton = document.querySelector('#submit');
     const tabPanels1 = form.querySelectorAll('form > div.form-group');
     const tabPanels2 = form.querySelectorAll('form > fieldset');
     const tabPanels = Array.from(tabPanels1).concat(Array.from(tabPanels2));
@@ -69,9 +110,6 @@ export const init = () => {
     for(var i=steps[currentStep]+1; i< tabPanels.length; i++) {
         tabPanels[i].classList.add('hidden');
     }
-    // for(var j =0 ; j <= steps[currentStep + 1]; j++) {
-    //     tabPanels[j].classList.remove('hidden');
-    // }
 
     // Next: Change UI relative to the current step and account for button permissions
     nextButton.addEventListener('click', (event) => {
@@ -79,13 +117,11 @@ export const init = () => {
         event.preventDefault();
         // Hide current tab
         for(var i = 0 ; i <= steps[currentStep]; i++) {
-            window.console.log('hide' + tabPanels[i] + 'step' + steps[currentStep] + 'div' +  i + '----');
             tabPanels[i].classList.add('hidden');
         }
         tabTargets[currentStep].classList.remove('active');
         // Show next tab
         for(i=steps[currentStep]+1; i <= steps[currentStep + 1]; i++) {
-            window.console.log('show' + tabPanels[i] + 'step' + steps[currentStep + 1] + 'div' + i + '+++++');
             tabPanels[i].classList.remove('hidden');
         }
         currentStep += 1;
@@ -99,7 +135,6 @@ export const init = () => {
         event.preventDefault();
         // Hide current tab
         for(var i = 0; i < tabPanels.length; i++) {
-            window.console.log('hide' + tabPanels[i] + 'div' + i + '----');
             tabPanels[i].classList.add('hidden');
         }
         tabTargets[currentStep].classList.remove('active');
@@ -111,8 +146,6 @@ export const init = () => {
         }
         for(i = start + 1; i <= steps[currentStep -1]; i++) {
             tabPanels[i].classList.remove('hidden');
-            window.console.log('show' + tabPanels[i] +  'step' + steps[currentStep - 1] + 'div' + i + '+++++');
-
         }
         tabTargets[currentStep - 1].classList.add('active');
         currentStep -= 1;
@@ -120,60 +153,60 @@ export const init = () => {
         updateStatusDisplay();
     });
 
-/**
- * updateStatusDisplay
- * @returns {any}
- */
-  function updateStatusDisplay() {
-    // If on the last step, hide the next button and show submit
-    if (currentStep === tabTargets.length - 1) {
-      nextButton.classList.add('hidden');
-      previousButton.classList.remove('hidden');
-      //submitButton.classList.remove('hidden');
-      validateEntry();
-      // If it's the first step hide the previous button
-    } else if (currentStep == 0) {
-      nextButton.classList.remove('hidden');
-      previousButton.classList.add('hidden');
-      //submitButton.classList.add('hidden');
-      // In all other instances display both buttons
-    } else {
-      nextButton.classList.remove('hidden');
-      previousButton.classList.remove('hidden');
-      //submitButton.classList.add('hidden');
+    /**
+     * updateStatusDisplay
+     * @returns {any}
+     */
+    function updateStatusDisplay() {
+        // If on the last step, hide the next button and show submit
+        if (currentStep === tabTargets.length - 1) {
+            nextButton.classList.add('hidden');
+            previousButton.classList.remove('hidden');
+            //submitButton.classList.remove('hidden');
+            validateEntry();
+            // If it's the first step hide the previous button
+        } else if (currentStep == 0) {
+            nextButton.classList.remove('hidden');
+            previousButton.classList.add('hidden');
+            //submitButton.classList.add('hidden');
+            // In all other instances display both buttons
+        } else {
+            nextButton.classList.remove('hidden');
+            previousButton.classList.remove('hidden');
+            //submitButton.classList.add('hidden');
+        }
     }
-  }
 
 
-/**
- * Description
- * @returns {any}
- */
-  function validateEntry() {
-    let input = tabPanels[currentStep].querySelector('input');
-    // Start but disabling continue button
-    nextButton.setAttribute('disabled', true);
-    //submitButton.setAttribute('disabled', true);
-    // Validate on initial function fire
-    setButtonPermissions(input);
-    // Validate on input
-    input.addEventListener('input', () => setButtonPermissions(input));
-    // Validate if bluring from input
-    input.addEventListener('blur', () => setButtonPermissions(input));
-  }
-
-/**
- * Description
- * @param {any} input
- * @returns {any}
- */
-  function setButtonPermissions(input) {
-    if (isEmpty(input.value)) {
-      nextButton.setAttribute('disabled', true);
-      //submitButton.setAttribute('disabled', true);
-    } else {
-      nextButton.removeAttribute('disabled');
-      //submitButton.removeAttribute('disabled');
+    /**
+     * Description
+     * @returns {any}
+     */
+    function validateEntry() {
+        let input = tabPanels[currentStep].querySelector('input');
+        // Start but disabling continue button
+        nextButton.setAttribute('disabled', true);
+        //submitButton.setAttribute('disabled', true);
+        // Validate on initial function fire
+        setButtonPermissions(input);
+        // Validate on input
+        input.addEventListener('input', () => setButtonPermissions(input));
+        // Validate if bluring from input
+        input.addEventListener('blur', () => setButtonPermissions(input));
     }
-  }
+
+    /**
+     * Description
+     * @param {any} input
+     * @returns {any}
+     */
+    function setButtonPermissions(input) {
+        if (isEmpty(input.value)) {
+            nextButton.setAttribute('disabled', true);
+            //submitButton.setAttribute('disabled', true);
+        } else {
+            nextButton.removeAttribute('disabled');
+            //submitButton.removeAttribute('disabled');
+        }
+    }
 };

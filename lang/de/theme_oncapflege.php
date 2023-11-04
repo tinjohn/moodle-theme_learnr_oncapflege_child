@@ -4,3 +4,4 @@
 // This line protects the file from being accessed by a URL directly.                                                               
 defined('MOODLE_INTERNAL') || die();   
 
+$string['missingvals'] = "Einige Felder sind nicht ausgefüllt, benutze die Pfeile um im Formular zu blättern um die Einträge zu überprüfen.";

@@ -781,3 +781,5 @@ $string['showadvertonpages-mycourses'] = 'My Courses Page';
 $string['showadvertonpages-course'] = 'Course Home Page';
 
 // End DBN Update.
+
+$string['missingvals'] = "Some fields are not filled in. Use the arrows to navigate the form to check the entries.";
