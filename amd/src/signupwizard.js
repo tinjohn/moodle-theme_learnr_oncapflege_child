@@ -10,6 +10,7 @@ export const init = () => {
     function addListEntry(message) {
         const listItem = document.createElement('li');
         listItem.textContent = message;
+        listItem.classList.add("nodecoration");
         errorSummaryUl.appendChild(listItem);
     }
     /**
@@ -38,11 +39,40 @@ export const init = () => {
         }
     }
 
+    /**
+     * Description
+     * @returns {any}
+     */
+    function refreshWizard() {
+        tabTargets[currentStep].classList.remove('active');
+        currentStep = 0;
+        for(var i=steps[currentStep]+1; i< tabPanels.length; i++) {
+            tabPanels[i].classList.add('hidden');
+        }
+        for(var i=0; i <= steps[currentStep]; i++) {
+            tabPanels[i].classList.remove('hidden');
+        }
+        tabTargets[currentStep].classList.add('active');
+        updateStatusDisplay();
+        refreshErrorsummary();
+    }
+
+    /**
+     * Description
+     * @returns {any}
+     */
+    function refreshErrorsummary () {
+        const errorSummary = document.querySelector('#formerrorssummary');
+        errorSummary.classList.add('hidden');
+        removeAllListEntries();
+    }
+
     // Create the pagination div and its contents
     const paginationHTML = `
     <div class="pagination">
     <a class="btn hidden" id="prev"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
     <a class="btn " id="next"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>    </a>
+    <a class="btn hidden" id="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></a>
     </div>
     `;
 
@@ -57,9 +87,7 @@ export const init = () => {
     submitButton.addEventListener('click', () => {
          // Remove the event listener
         form.removeEventListener(formEventTypes.formFieldValidationFailed, fieldValidationFailedListener);
-        const errorSummary = document.querySelector('#formerrorssummary');
-        errorSummary.classList.add('hidden');
-        removeAllListEntries();
+        refreshErrorsummary();
         form.addEventListener(formEventTypes.formFieldValidationFailed, fieldValidationFailedListener);
     });
 
@@ -76,6 +104,7 @@ export const init = () => {
     //     errorSummary.classList.remove('hidden');
     // });
 
+    const refreshButton = document.querySelector('#refresh');
     const previousButton = document.querySelector('#prev');
     const nextButton = document.querySelector('#next');
     //const submitButton = document.querySelector('#submit');
@@ -107,6 +136,7 @@ export const init = () => {
 
     const tabTargets = document.querySelectorAll('.tab');
 
+    // currentStep is 0
     for(var i=steps[currentStep]+1; i< tabPanels.length; i++) {
         tabPanels[i].classList.add('hidden');
     }
@@ -153,6 +183,13 @@ export const init = () => {
         updateStatusDisplay();
     });
 
+    // Refresh: Change UI relative to current step and account for button permissions
+    refreshButton.addEventListener('click', () => {
+        refreshWizard();
+    });
+
+
+
     /**
      * updateStatusDisplay
      * @returns {any}
@@ -162,17 +199,20 @@ export const init = () => {
         if (currentStep === tabTargets.length - 1) {
             nextButton.classList.add('hidden');
             previousButton.classList.remove('hidden');
+            refreshButton.classList.remove('hidden');
             //submitButton.classList.remove('hidden');
             validateEntry();
             // If it's the first step hide the previous button
         } else if (currentStep == 0) {
             nextButton.classList.remove('hidden');
             previousButton.classList.add('hidden');
+            refreshButton.classList.add('hidden');
             //submitButton.classList.add('hidden');
             // In all other instances display both buttons
         } else {
             nextButton.classList.remove('hidden');
             previousButton.classList.remove('hidden');
+            refreshButton.classList.add('hidden');
             //submitButton.classList.add('hidden');
         }
     }
