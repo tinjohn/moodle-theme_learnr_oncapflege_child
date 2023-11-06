@@ -1582,7 +1582,7 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
 
 
         // Add settings page to the admin settings category.
-        $ADMIN->add('theme_learnr', $page);
+        $ADMIN->add('theme_oncapflege', $page);
 
         // Create Feel settings page with tabs
         // (and allow users with the theme/learnr:configure capability to access it).
@@ -1596,7 +1596,7 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
                 get_string('navigationtab', 'theme_learnr', null, true));
 
         // Create primary navigation heading.
-        $name = 'theme_oncapflege/primarynavigationheading';
+        $name = 'theme_learnr/primarynavigationheading';
         $title = get_string('primarynavigationheading', 'theme_learnr', null, true);
         $setting = new admin_setting_heading($name, $title, null);
         $tab->add($setting);
@@ -1610,7 +1610,7 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
         );
 
         // Setting: Hide nodes in primary navigation.
-        $name = 'theme_oncapflege/hidenodesprimarynavigation';
+        $name = 'theme_learnr/hidenodesprimarynavigation';
         $title = get_string('hidenodesprimarynavigationsetting', 'theme_learnr', null, true);
         $description = get_string('hidenodesprimarynavigationsetting_desc', 'theme_learnr', null, true);
         $setting = new admin_setting_configmulticheckbox($name, $title, $description, array(), $hidenodesoptions);
@@ -1618,13 +1618,13 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
         $tab->add($setting);
 
         // Create navigation heading.
-        $name = 'theme_oncapflege/navigationheading';
+        $name = 'theme_learnr/navigationheading';
         $title = get_string('navigationheading', 'theme_learnr', null, true);
         $setting = new admin_setting_heading($name, $title, null);
         $tab->add($setting);
 
         // Setting: back to top button.
-        $name = 'theme_oncapflege/backtotopbutton';
+        $name = 'theme_learnr/backtotopbutton';
         $title = get_string('backtotopbuttonsetting', 'theme_learnr', null, true);
         $description = get_string('backtotopbuttonsetting_desc', 'theme_learnr', null, true);
         $setting = new admin_setting_configselect($name, $title, $description, THEME_LEARNR_SETTING_SELECT_YES, $yesnooption);
@@ -1632,7 +1632,7 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
         $tab->add($setting);
 
         // Setting: scroll-spy.
-        $name = 'theme_oncapflege/scrollspy';
+        $name = 'theme_learnr/scrollspy';
         $title = get_string('scrollspysetting', 'theme_learnr', null, true);
         $description = get_string('scrollspysetting_desc', 'theme_learnr', null, true);
         $setting = new admin_setting_configselect($name, $title, $description, THEME_LEARNR_SETTING_SELECT_YES, $yesnooption);
@@ -1640,7 +1640,7 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
         $tab->add($setting);
 
         // Setting: Activity navigation.
-        $name = 'theme_oncapflege/activitynavigation';
+        $name = 'theme_learnr/activitynavigation';
         $title = get_string('activitynavigationsetting', 'theme_learnr', null, true);
         $description = get_string('activitynavigationsetting_desc', 'theme_learnr', null, true);
         $setting = new admin_setting_configselect($name, $title, $description, THEME_LEARNR_SETTING_SELECT_YES, $yesnooption);
@@ -1842,7 +1842,7 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
 
 
         // Add settings page to the admin settings category.
-        $ADMIN->add('theme_learnr', $page);
+        $ADMIN->add('theme_oncapflege', $page);
 
         // Create Content settings page with tabs
         // (and allow users with the theme/learnr:configure capability to access it).
@@ -2300,7 +2300,7 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
 
 
         // Add settings page to the admin settings category.
-        $ADMIN->add('theme_learnr', $page);
+        $ADMIN->add('theme_oncapflege', $page);
 
         // Create Functionality settings page with tabs
         // (and allow users with the theme/learnr:configure capability to access it).
@@ -2352,7 +2352,7 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
 
 
         // Add settings page to the admin settings category.
-        $ADMIN->add('theme_learnr', $page);
+        $ADMIN->add('theme_oncapflege', $page);
 
 
         // Create Flavours settings page as external page
@@ -2361,6 +2361,6 @@ if ($hassiteconfig || has_capability('theme/learnr:configure', context_system::i
                 get_string('configtitleflavours', 'theme_learnr', null, true),
                 new moodle_url('/theme/learnr/flavours/overview.php'),
                 'theme/learnr:configure');
-        $ADMIN->add('theme_learnr', $flavourspage);
+        $ADMIN->add('theme_oncapflege', $flavourspage);
     }
 }

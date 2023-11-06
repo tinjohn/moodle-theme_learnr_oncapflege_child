@@ -57,6 +57,7 @@ $THEME->haseditswitch = true;
 // LEARNR
 
 $THEME->showcourseindexnav = 1;
+$THEME->removedprimarynavitems = explode(',', get_config('theme_learnr', 'hidenodesprimarynavigation'));
 
 
 
