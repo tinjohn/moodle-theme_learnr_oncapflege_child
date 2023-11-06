@@ -4,3 +4,7 @@ Child theme of learnr a child theme of boost for overrides of:
   - instruction in login form
   - policy content
 - moodle core sign-up with plaintext password until blur of input field
+- a wizard is in progress
+
+![policiestoggle](https://github.com/tinjohn/moodle-theme_learnr_oncapflege_child/blob/wizard/docpix/Policies.png)
+![wizard](https://github.com/tinjohn/moodle-theme_learnr_oncapflege_child/blob/wizard/docpix/Wizard.png)

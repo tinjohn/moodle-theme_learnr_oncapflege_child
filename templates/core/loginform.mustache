@@ -136,12 +136,16 @@
                 !}}{{#canloginbyemail}}{{#cleanstr}}usernameemail{{/cleanstr}}{{/canloginbyemail}}" {{!
                 !}}autocomplete="username">
         </div>
-        <div class="login-form-password form-group">
+        <div class="login-form-password form-group forpassword">
             <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
             <input type="password" name="password" id="password" value="" {{!
                 !}}class="form-control form-control-lg" {{!
                 !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
                 !}}autocomplete="current-password">
+                <div>
+                    <input type="checkbox" id="toggle-password">
+                    <label id="label-toggle-password" for="toggle-password"></label>
+                </div>    
         </div>
         <div class="login-form-submit form-group">
             <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
@@ -229,4 +233,5 @@
             Submit.init("loginguestbtn");
         {{/canloginasguest}}
     });
+    require(['theme_oncapflege/toggleloginpassword'], (module) => module.init());
 {{/js}}

@@ -1,0 +1,39 @@
+#page-content {
+    //background-color: aqua;
+}
+/* for frontpage
+        @media (min-width: 721px) and (max-width: 1500px) {
+            .logocol {
+                width: 100% !important; 
+                flex-direction: row !important;
+                margin: 0 auto !important;
+            }
+         .flexleft {
+              margin: 0 auto !important;
+          }
+        }
+        @media (max-width: 720px) {
+            .logocol {
+                max-width: 100%; 
+                flex-direction: column !important;
+                margin: 0 auto !important;
+
+            }
+        }
+ */
+
+@media only screen and (min-width: 700px) {
+    .contentafterlink {
+       text-align: center;
+    }
+  ul {
+      padding-left: 0.1rem;
+      -webkit-margin-start: 0.2rem
+  }
+  }
+  
+  .pagelayout-frontpage div#page{
+      background-color: transparent;
+      background-size: cover;
+  }
+  

@@ -55,8 +55,11 @@ $THEME->haseditswitch = true;
 
 
 // LEARNR
+$THEME->extrascsscallback = 'theme_oncapflege_get_extra_scss';
+$THEME->prescsscallback = 'theme_oncapflege_get_pre_scss';
+$THEME->precompiledcsscallback = 'theme_oncapflege_get_precompiled_css';
 
-$THEME->showcourseindexnav = 1;
+$THEME->removedprimarynavitems = explode(',', get_config('theme_learnr', 'hidenodesprimarynavigation'));
 
 
 

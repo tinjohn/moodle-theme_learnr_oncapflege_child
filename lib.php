@@ -7,65 +7,60 @@ defined('MOODLE_INTERNAL') || die();
 
 // We will add callbacks here as we add features to our theme.
 
+
+
+function theme_oncapflege_get_pre_scss($theme) {
+    $conten = '';
+
+    //$theme = theme_config::load('learnr');
+    //return theme_learnr_get_pre_scss($theme);
+    return $content;
+}
+
+
+/**
+ * Inject additional SCSS.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string
+ */
+function theme_oncapflege_get_extra_scss($theme) {
+    // // Initialize extra SCSS.
+    $content = '';
+
+    $learnr = theme_config::load('learnr');
+    $imageurl = $learnr->setting_file_url('backgroundimage', 'backgroundimage');
+
+    // Sets the background image, and its settings.
+    if (!empty($imageurl)) {
+        $content .= '@media (min-width: 768px) {';
+        $content .= 'body { ';
+        $content .= "background-image: url('$imageurl'); background-size: cover;";
+        $content .= ' } }';
+    }
+
+
+    // $learnr = theme_config::load('learnr');
+    // $content = theme_learnr_get_extra_scss($learnr);
+   return $content;
+}
+
 function theme_oncapflege_get_main_scss_content($theme) {                                                                                
     global $CFG;                                                                                                                    
                                                                                                                                     
-    $scss = '';                                                                                                                     
-    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;                                                 
-    $fs = get_file_storage();                                                                                                       
-                                                                                                                                    
-    $context = context_system::instance();                                                                                          
-    if ($filename == 'default.scss') {                                                                                              
-        // We still load the default preset files directly from the boost theme. No sense in duplicating them.                      
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');                                        
-    } else if ($filename == 'plain.scss') {                                                                                         
-        // We still load the default preset files directly from the boost theme. No sense in duplicating them.                      
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');                                          
-                                                                                                                                    
-    } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_oncapflege', 'preset', 0, '/', $filename))) {              
-        // This preset file was fetched from the file area for theme_oncapflege and not theme_boost (see the line above).                
-        $scss .= $presetfile->get_content();                                                                                        
-    } else {                                                                                                                        
-        // Safety fallback - maybe new installs etc.                                                                                
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');                                        
-    }          
-    
-    $scss .= "\n";
-    // LearnR
-    $scss .= file_get_contents($CFG->dirroot . '/theme/learnr/scss/learnr/pre.scss');
-    if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_learnr', 'preset', 0, '/', $filename))) {
-        $scss .= $presetfile->get_content();
-    } else {
-        // Safety fallback - maybe new installs etc.
-        $scss .= file_get_contents($CFG->dirroot . '/theme/learnr/scss/preset/default.scss');
-    }
-
-    // Begin DBN Update.
-    if ($theme->settings->sectionstyle == 1) {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/learnr/scss/sections/sections-learnr.scss');
-    }
-
-    if ($theme->settings->sectionstyle == 2) {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/learnr/scss/sections/sections-boxed.scss');
-    }
-
-    if ($theme->settings->sectionstyle == 3) {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/learnr/scss/sections/sections-boost.scss');
-    }
-
-    if ($theme->settings->sectionstyle == 4) {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/learnr/scss/sections/sections-bars.scss');
-    }
-    // End DBN Update.
-
-    $scss .= file_get_contents($CFG->dirroot . '/theme/learnr/scss/learnr/post.scss');
-
+    $scss = '';     
+    $themeparent = theme_config::load('learnr'); 
+    $learnrScss = theme_learnr_get_main_scss_content($themeparent);
+    $scss .= $learnrScss;
                 
      // Pre CSS - this is loaded AFTER any prescss from the setting but before the main scss.                                        
      $pre = file_get_contents($CFG->dirroot . '/theme/oncapflege/scss/pre.scss');                                                         
      // Post CSS - this is loaded AFTER the main scss but before the extra scss from the setting.                                    
      $post = file_get_contents($CFG->dirroot . '/theme/oncapflege/scss/post.scss');                                                       
+     $toggleinstr = file_get_contents($CFG->dirroot . '/theme/oncapflege/scss/toggleinstructions.scss');                                                       
+     $togglepwd = file_get_contents($CFG->dirroot . '/theme/oncapflege/scss/togglepassword.scss');                                                       
+     $wizard = file_get_contents($CFG->dirroot . '/theme/oncapflege/scss/loginformwizard.scss');                                                       
                                                                                                                                      
      // Combine them together.                                                                                                       
-     return $pre . "\n" . $scss . "\n" . $post;                                           
+     return $pre . "\n" . $scss . "\n" . $post . "\n" . $toggleinstr . "\n" . $togglepwd . "\n" . $wizard;                                           
 }
