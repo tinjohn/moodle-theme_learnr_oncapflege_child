@@ -108,20 +108,26 @@ export const init = () => {
     const previousButton = document.querySelector('#prev');
     const nextButton = document.querySelector('#next');
     //const submitButton = document.querySelector('#submit');
-    const tabPanels1 = form.querySelectorAll('form > div.form-group');
-    const tabPanels2 = form.querySelectorAll('form > fieldset');
-    const tabPanels = Array.from(tabPanels1).concat(Array.from(tabPanels2));
+    const tabPanels = form.querySelectorAll('form > *');
+    const fieldsets = form.querySelectorAll('form > fieldset');
 
-    const isEmpty = (str) => !str.trim().length;
+    //const tabPanels = Array.from(tabPanels1).concat(Array.from(tabPanels2));
+    //const isEmpty = (str) => !str.trim().length;
     let currentStep = 0;
-    const steps = [4, 8, 10, tabPanels.length - 1];
 
+    const steps = [6, 10]; // Initialize the array with 6 and 10
+    for (let x = 1; x < fieldsets.length; x++) {
+        steps.push(10 + x); // Add 10 + x to the array for each x from 1 to the length of fieldsets
+    }
+    steps.push(tabPanels.length - 1); // Add tabPanels.length - 1 as the last index in the array
+
+    //const steps = [6, 10, 11, tabPanels.length-1];
     // Create the tab status HTML
     var tabStatusHTML = `
     <div class="tab-status">
         <span class="tab active">1</span>
     `;
-    for(var sc = 2; sc < steps.length; sc++) {
+    for(var sc = 2; sc <= steps.length; sc++) {
     tabStatusHTML += `
         <span class="tab">` + sc + `</span>
     `;
@@ -201,7 +207,7 @@ export const init = () => {
             previousButton.classList.remove('hidden');
             refreshButton.classList.remove('hidden');
             //submitButton.classList.remove('hidden');
-            validateEntry();
+            //validateEntry();
             // If it's the first step hide the previous button
         } else if (currentStep == 0) {
             nextButton.classList.remove('hidden');
@@ -218,35 +224,35 @@ export const init = () => {
     }
 
 
-    /**
-     * Description
-     * @returns {any}
-     */
-    function validateEntry() {
-        let input = tabPanels[currentStep].querySelector('input');
-        // Start but disabling continue button
-        nextButton.setAttribute('disabled', true);
-        //submitButton.setAttribute('disabled', true);
-        // Validate on initial function fire
-        setButtonPermissions(input);
-        // Validate on input
-        input.addEventListener('input', () => setButtonPermissions(input));
-        // Validate if bluring from input
-        input.addEventListener('blur', () => setButtonPermissions(input));
-    }
+    // /**
+    //  * Description
+    //  * @returns {any}
+    //  */
+    // function validateEntry() {
+    //     let input = tabPanels[currentStep].querySelector('input');
+    //     // Start but disabling continue button
+    //     nextButton.setAttribute('disabled', true);
+    //     //submitButton.setAttribute('disabled', true);
+    //     // Validate on initial function fire
+    //     setButtonPermissions(input);
+    //     // Validate on input
+    //     input.addEventListener('input', () => setButtonPermissions(input));
+    //     // Validate if bluring from input
+    //     input.addEventListener('blur', () => setButtonPermissions(input));
+    // }
 
-    /**
-     * Description
-     * @param {any} input
-     * @returns {any}
-     */
-    function setButtonPermissions(input) {
-        if (isEmpty(input.value)) {
-            nextButton.setAttribute('disabled', true);
-            //submitButton.setAttribute('disabled', true);
-        } else {
-            nextButton.removeAttribute('disabled');
-            //submitButton.removeAttribute('disabled');
-        }
-    }
+    // /**
+    //  * Description
+    //  * @param {any} input
+    //  * @returns {any}
+    //  */
+    // function setButtonPermissions(input) {
+    //     if (isEmpty(input.value)) {
+    //         nextButton.setAttribute('disabled', true);
+    //         //submitButton.setAttribute('disabled', true);
+    //     } else {
+    //         nextButton.removeAttribute('disabled');
+    //         //submitButton.removeAttribute('disabled');
+    //     }
+    // }
 };

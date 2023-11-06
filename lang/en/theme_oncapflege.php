@@ -782,4 +782,4 @@ $string['showadvertonpages-course'] = 'Course Home Page';
 
 // End DBN Update.
 
-$string['missingvals'] =  'Some fields are not filled in, use the restart arrow to go to the beginning of the form to check the entries.';
+$string['missingvals'] =  'Some fields are not filled in, use the restart arrow  ( <i class="fa fa-refresh" aria-hidden="true"></i> ) to go to the beginning of the form to check the entries.';
