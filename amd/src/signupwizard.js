@@ -115,7 +115,7 @@ export const init = () => {
     //const isEmpty = (str) => !str.trim().length;
     let currentStep = 0;
     for(var x=1; x<tabPanels.length; x++) {
-        alert(tabPanels[x]);
+        window.console.log(tabPanels[x]);
     }
     const steps = [6, 10]; // Initialize the array with 6 and 10
     for (let x = 1; x < fieldsets.length; x++) {
