@@ -117,7 +117,7 @@ export const init = () => {
     for(var x=1; x<tabPanels.length; x++) {
         window.console.log(tabPanels[x]);
     }
-    const steps = [6, 10]; // Initialize the array with 6 and 10
+    const steps = [5, 9]; // Initialize the array with 6 and 10
     for (let x = 1; x < fieldsets.length; x++) {
         steps.push(10 + x); // Add 10 + x to the array for each x from 1 to the length of fieldsets
     }
