@@ -114,7 +114,7 @@ export const init = () => {
 
     const isEmpty = (str) => !str.trim().length;
     let currentStep = 0;
-    const steps = [4, 8, 10, 15, tabPanels.length - 1];
+    const steps = [4, 8, 10, 14, tabPanels.length - 1];
 
     // Create the tab status HTML
     var tabStatusHTML = `
