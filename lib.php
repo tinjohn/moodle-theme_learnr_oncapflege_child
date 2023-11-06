@@ -7,6 +7,44 @@ defined('MOODLE_INTERNAL') || die();
 
 // We will add callbacks here as we add features to our theme.
 
+
+
+function theme_oncapflege_get_pre_scss($theme) {
+    $conten = '';
+
+    //$theme = theme_config::load('learnr');
+    //return theme_learnr_get_pre_scss($theme);
+    return $content;
+}
+
+
+/**
+ * Inject additional SCSS.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string
+ */
+function theme_oncapflege_get_extra_scss($theme) {
+    // // Initialize extra SCSS.
+    $content = '';
+
+    $learnr = theme_config::load('learnr');
+    $imageurl = $learnr->setting_file_url('backgroundimage', 'backgroundimage');
+
+    // Sets the background image, and its settings.
+    if (!empty($imageurl)) {
+        $content .= '@media (min-width: 768px) {';
+        $content .= 'body { ';
+        $content .= "background-image: url('$imageurl'); background-size: cover;";
+        $content .= ' } }';
+    }
+
+
+    // $learnr = theme_config::load('learnr');
+    // $content = theme_learnr_get_extra_scss($learnr);
+   return $content;
+}
+
 function theme_oncapflege_get_main_scss_content($theme) {                                                                                
     global $CFG;                                                                                                                    
                                                                                                                                     

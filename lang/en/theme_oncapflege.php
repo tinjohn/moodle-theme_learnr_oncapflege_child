@@ -8,7 +8,7 @@ defined('MOODLE_INTERNAL') || die();
 
 // General.
 // A description shown in the admin theme selector.                                                                                 
-$string['choosereadme'] = 'Theme oncapflege is a child theme of LearnR a child theme of Boost. It adds the ux improvements for busy young ones.';                
+$string['choosereadme'] = 'The oncapflege theme is a child theme of LearnR, which is itself a child theme of Boost. It adds user-friendliness improvements for young users. Some LearnR options are not inherited and must or can be set in the settings (again).';
 // The name of our plugin.                                                                                                          
 $string['pluginname'] = 'Oncapflege';                                                                                                    
 // We need to include a lang string for each block region.                                                                          
