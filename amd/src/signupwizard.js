@@ -114,7 +114,9 @@ export const init = () => {
     //const tabPanels = Array.from(tabPanels1).concat(Array.from(tabPanels2));
     //const isEmpty = (str) => !str.trim().length;
     let currentStep = 0;
-
+    for(var x=1; x<tabPanels.length; x++) {
+        alert(tabPanels[x]);
+    }
     const steps = [6, 10]; // Initialize the array with 6 and 10
     for (let x = 1; x < fieldsets.length; x++) {
         steps.push(10 + x); // Add 10 + x to the array for each x from 1 to the length of fieldsets
