@@ -3,20 +3,30 @@
 }
 #loginform-label-toggle-instruction {
     width: 100%;
+    color: #000;
+}
+#loginform-label-toggle-instruction:hover {
+    color: #7A000C;
 }
 
 #loginform-label-toggle-instruction::after {
     content: '\f150';
     font-family: 'FontAwesome';
-    color: #7A000C;
+    /* color: #7A000C; */
     float: right;
     text-align: right;
     font-size: 1.5em;
 }
+#label-toggle-instruction {
+    color: #000;
+}
+#label-toggle-instruction:hover {
+    color: #7A000C;
+}
 #label-toggle-instruction::after {
     content: '\f150';
     font-family: 'FontAwesome';
-    color: #7A000C;
+    /* color: #7A000C; */
     font-size: 1.5em;
 }
 
@@ -36,7 +46,7 @@
 #loginform-toggle-instruction:checked ~ span {
     display: block;
 }
-#loginform-toggle-instruction:checked ~ #loginform-label-toggle-instruction::after {
+#toggle-instruction:checked ~ #loginform-label-toggle-instruction::after {
     content: '\f151';
 }
 
