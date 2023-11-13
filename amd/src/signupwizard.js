@@ -1,7 +1,6 @@
 import {eventTypes as formEventTypes} from 'core_form/events';
 
-export const init = () => {
-
+export const init = (strs) => {
     /**
      * Function to add list entries based on event messages
      * @param {any} message
@@ -70,9 +69,9 @@ export const init = () => {
     // Create the pagination div and its contents
     const paginationHTML = `
     <div class="pagination">
-    <a class="btn hidden" id="prev"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
-    <a class="btn " id="next"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>    </a>
-    <a class="btn hidden" id="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+    <a class="btn hidden" id="prev" title="`+ strs[0] +`"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
+    <a class="btn" id="next" title="`+ strs[1] +`"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>    </a>
+    <a class="btn hidden" id="refresh" title="`+ strs[2] +`"><i class="fa fa-refresh" aria-hidden="true"></i></a>
     </div>
     `;
 

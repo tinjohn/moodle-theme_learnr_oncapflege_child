@@ -3,10 +3,11 @@
 }
 #loginform-label-toggle-instruction {
     width: 100%;
-    color: #000;
+    color: #7A000C;
 }
 #loginform-label-toggle-instruction:hover {
-    color: #7A000C;
+    cursor: pointer;
+    color: #540008;
 }
 
 #loginform-label-toggle-instruction::after {
@@ -18,10 +19,11 @@
     font-size: 1.5em;
 }
 #label-toggle-instruction {
-    color: #000;
+    color: #7A000C;
 }
 #label-toggle-instruction:hover {
-    color: #7A000C;
+    cursor: pointer;
+    color: #540008;
 }
 #label-toggle-instruction::after {
     content: '\f150';

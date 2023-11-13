@@ -1,10 +1,10 @@
 
-export const init = () => {
+export const init = (strs) => {
 
     const togglechb = `
     <div>
         <input type="checkbox" id="toggle-password">
-        <label id="label-toggle-password" for="toggle-password"></label>
+        <label id="label-toggle-password" title="`+ strs +`" for="toggle-password"></label>
     </div>`;
 
     // Create a new element (e.g., a <div>) with the content

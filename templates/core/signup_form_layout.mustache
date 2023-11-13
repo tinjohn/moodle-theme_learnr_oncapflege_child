@@ -17,7 +17,12 @@
     <div id="formerrorssummary" class="hidden">{{#str}} missingvals, theme_oncapflege {{/str}}<ul></ul><div>
 
 </div>
+
 {{#js}}
-    require(['theme_oncapflege/showpassword'], (module) => module.init());
-    require(['theme_oncapflege/signupwizard'], (module) => module.init());
+const togglestr = new Array(`{{#str}} toggle-info, theme_oncapflege {{/str}}`);
+const strs = new Array(`{{#str}} previous, theme_oncapflege {{/str}}`, `{{#str}} next, theme_oncapflege {{/str}}`, `{{#str}} fromthetop, theme_oncapflege {{/str}}`)
+
+    require(['theme_oncapflege/showpassword'], (module) => module.init(togglestr));
+    require(['theme_oncapflege/signupwizard'], (module) => module.init(strs));
 {{/js}}
+
