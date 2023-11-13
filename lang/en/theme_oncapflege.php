@@ -787,3 +787,5 @@ $string['toggle-info'] = 'toggle view';
 $string['previous'] =  'previous';
 $string['next'] =  'next';
 $string['fromthetop'] =  'to the top';
+$string['forexamplelang'] = 'e.g. english';
+$string['profilefieldmothertongue'] = '#id_profile_field_mother_tongue';

@@ -11,3 +11,6 @@ $string['toggle-info'] =  'ein- und ausausblenden';
 $string['previous'] =  'zurück';
 $string['next'] =  'weiter';
 $string['fromthetop'] =  'zum Anfang';
+$string['forexamplelang'] = 'z. Bsp. Deutsch';
+$string['mothertongue'] = 'Muttersprache';
+$string['profilefieldmothertongue'] = '#id_profile_field_Muttersprache';

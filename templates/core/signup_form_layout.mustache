@@ -21,8 +21,10 @@
 {{#js}}
 const togglestr = new Array(`{{#str}} toggle-info, theme_oncapflege {{/str}}`);
 const strs = new Array(`{{#str}} previous, theme_oncapflege {{/str}}`, `{{#str}} next, theme_oncapflege {{/str}}`, `{{#str}} fromthetop, theme_oncapflege {{/str}}`)
+const placeholder_n_str = new Array(`{{#str}} profilefieldmothertongue, theme_oncapflege {{/str}}`,`{{#str}} forexamplelang, theme_oncapflege {{/str}}`);
 
     require(['theme_oncapflege/showpassword'], (module) => module.init(togglestr));
     require(['theme_oncapflege/signupwizard'], (module) => module.init(strs));
+    require(['theme_oncapflege/placeholder'], (module) => module.init(placeholder_n_str));
 {{/js}}
 
