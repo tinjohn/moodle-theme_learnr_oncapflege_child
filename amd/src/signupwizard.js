@@ -66,6 +66,12 @@ export const init = (strs) => {
         removeAllListEntries();
     }
 
+    // profile_field_Muttersprache
+    const pfmspr = document.querySelector('#id_profile_field_Muttersprache');
+    if(pfmspr) {
+        pfmspr.placeholder = 'z. Bsp. Deutsch';
+    }
+
     // Create the pagination div and its contents
     const paginationHTML = `
     <div class="pagination">
