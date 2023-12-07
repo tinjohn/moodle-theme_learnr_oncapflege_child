@@ -96,6 +96,9 @@
         <a role="button" href="{{editurl}}" class="btn">{{#str}} edit {{/str}}</a>
     {{/editurl}}
     {{#accepturl}}
+        <span>
+            {{#str}} click-to-proceed, theme_oncapflege {{/str}}
+        </span>
         <a role="button" href="{{accepturl}}" class="btn btn-primary">{{#str}} iagree, tool_policy, {{{policy.name}}} {{/str}}</a>
     {{/accepturl}}
     {{#declineurl}}
