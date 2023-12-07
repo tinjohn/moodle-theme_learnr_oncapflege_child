@@ -6,67 +6,71 @@
       margin-right: 0px;
     }
     
-    }
+}
     
-    @media only screen and (max-width: 930px) {
+@media only screen and (max-width: 930px) {
     /* in github maybe released */
     #block-region-content-lower .block_ildmetaselect {
       margin: 0 0;
     } 
+}
     
-    }
-    
-    header#page-header .progress {
-        background-color: #d9d9d9;
-    }
-    .login-container {
-        border-radius: 2rem;
-    }
-    
-    /* front-end */
-    
-    .pagelayout-frontpage div#learnrpage{
-        background-color: transparent;
-        border: 0px solid #dee2e6;
-    }
-    .pagelayout-frontpage header#page-header{
-        display: none;
-    }
-    .pagelayout-frontpage .course-content {
-         border: 15px solid #fff;
-        border-radius: 34px 0 0 0;
-    }
-    
-    .pagelayout-frontpage .primary-navigation {
-        visibility: hidden;
-    }
-    
-    .block_ildmetaselect {
-       max-width: unset;
-    }
-    .metatile-container {
-       max-width: 90%;
-    }
-    
-    span.h5pisyml {
-        display: none;
-    }
-    span.h5pisyml[lang=en] {
-        display: inherit;
-    }
-    
-    /* My courses */
-    .dashboard-card-deck {
-        .dashboard-card {
-            .dashboard-card-img {
-                height: 11rem;
-                background-position: center;
-                background-size: contain;
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
-                background-repeat: no-repeat;
-            }
+header#page-header .progress {
+    background-color: #d9d9d9;
+}
+.login-container {
+    border-radius: 2rem;
+}
+
+/* front-end */
+
+.pagelayout-frontpage div#learnrpage{
+    background-color: transparent;
+    border: 0px solid #dee2e6;
+}
+.pagelayout-frontpage header#page-header{
+    display: none;
+}
+.pagelayout-frontpage .course-content {
+        border: 15px solid #fff;
+    border-radius: 34px 0 0 0;
+}
+
+.pagelayout-frontpage .primary-navigation {
+    visibility: hidden;
+}
+
+.block_ildmetaselect {
+    max-width: unset;
+}
+.metatile-container {
+    max-width: 90%;
+}
+
+span.h5pisyml {
+    display: none;
+}
+span.h5pisyml[lang=en] {
+    display: inherit;
+}
+
+/* My courses */
+.dashboard-card-deck {
+    .dashboard-card {
+        .dashboard-card-img {
+            height: 11rem;
+            background-position: center;
+            background-size: contain;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background-repeat: no-repeat;
         }
     }
-    
-    
+}
+/* Buttons */
+.btn-primary {
+    border-radius: 5px;
+}
+.btn-secondary {
+    border-radius: 5px;
+}
