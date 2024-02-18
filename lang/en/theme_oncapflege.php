@@ -790,3 +790,4 @@ $string['fromthetop'] =  'to the top';
 $string['forexamplelang'] = 'e.g. english';
 $string['profilefieldmothertongue'] = '#id_profile_field_mother_tongue';
 $string['click-to-proceed'] = 'Click button to proceed: ';
+$string['coursesusingthiscompetency'] = 'Complete following Nugget(s)';

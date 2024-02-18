@@ -15,3 +15,4 @@ $string['forexamplelang'] = 'z. Bsp. Deutsch';
 $string['mothertongue'] = 'Muttersprache';
 $string['profilefieldmothertongue'] = '#id_profile_field_Muttersprache';
 $string['click-to-proceed'] = 'Zum Fortfahren auf die Schaltfläche klicken: ';
+$string['coursesusingthiscompetency'] = 'Absolviere folgende(s) Nugget(s)';

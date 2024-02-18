@@ -1,0 +1,88 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template tool_lp/linked_courses_summary
+
+    Moodle template for the list of linked courses to a competency
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * courses array
+      * viewurl
+      * fullname
+      * shortname
+
+    Example context (json):
+    { "courses":
+        [
+            {
+                "viewurl": "http://example.com",
+                "fullname": "Course 1",
+                "shortname": "C1"
+                "AT" : 0 || 1
+            }
+        ]
+    }
+}}
+
+<h3> Selbsteinschätzung</h3>
+<p>
+Bist du bereits mit dem Thema gut vertraut und kannst dein Wissen sofort testen oder eher nicht und möchtest lieber die Lerneinheit besuchen? 
+</p>
+<p class="d-flex justify-content-between justify-content-around">
+<a class="sectiontoggle collapsed " data-toggle="collapse" href="#AT" role="" aria-expanded="false" aria-controls="AT">
+     <i class="fa fa-3x fa-thumbs-up green"></i>
+</a>
+<a class="sectiontoggle collapsed" data-toggle="collapse" href="#Nugget" role="" aria-expanded="false" aria-controls="Nugget">
+     <i class="fa fa-3x fa-thumbs-o-down text-primary"></i>
+</a>
+</p>
+{{#courses}}
+    {{#AT}}
+        <div class="oncapflegelinkedcourses collapse" id="AT">
+            <h3 class="atinclist"> Auf geht's. Prüfe dein Wissen.</h3>
+            <p> 
+            <a class="atinclist href="{{viewurl}}"> 
+            <i class="fa fa-2x fa-tasks green pr-3""></i>
+            {{{fullname}}}
+            </a>
+            <br>
+            </p>
+        </div>
+    {{/AT}}
+    {{^AT}}
+        <div class="oncapflegelinkedcourses collapse" id="Nugget">
+            <h3 class="atinclist">Bereit zum Lernen.</h3> 
+            <p>
+            <a href="{{viewurl}}">
+            <i class="fa fa-2x fa-book text-primary pr-3"></i>
+                    {{{fullname}}}
+            </a>
+            </p>
+        </div>
+    {{/AT}}
+
+
+{{/courses}}
+{{^courses}}
+    {{#str}}nolinkedcourses, tool_lp{{/str}}
+{{/courses}}
