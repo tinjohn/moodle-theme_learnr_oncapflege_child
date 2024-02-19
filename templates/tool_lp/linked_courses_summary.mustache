@@ -44,10 +44,10 @@
     }
 }}
 
-<h3> Selbsteinschätzung</h3>
+<h4> Selbsteinschätzung</h4>
 <p>
 Bist du bereits mit dem Thema gut vertraut und kannst dein Wissen sofort testen oder eher nicht und möchtest lieber die Lerneinheit besuchen? 
-</p>
+<br><b>Wähle:</b></p>
 <p class="d-flex justify-content-between justify-content-around">
 <a class="sectiontoggle collapsed " data-toggle="collapse" href="#AT" role="" aria-expanded="false" aria-controls="AT">
      <i class="fa fa-3x fa-thumbs-up green"></i>
@@ -56,10 +56,14 @@ Bist du bereits mit dem Thema gut vertraut und kannst dein Wissen sofort testen 
      <i class="fa fa-3x fa-thumbs-o-down text-primary"></i>
 </a>
 </p>
+{{^courses}}
+<p class="text-primary">Leider sind noch keine Lerneinheiten verknüpft. Die entsprechenden Learning Nuggets werden demächst zur Verfügung gestellt.</p>
+{{/courses}}
+
 {{#courses}}
     {{#AT}}
         <div class="oncapflegelinkedcourses collapse" id="AT">
-            <h3 class="atinclist"> Auf geht's. Prüfe dein Wissen.</h3>
+            <h5 class="atinclist"> Auf geht's. Prüfe dein Wissen.</h3>
             <p> 
             <a href="{{viewurl}}"> 
             <i class="fa fa-2x fa-tasks green pr-3""></i>
@@ -71,7 +75,7 @@ Bist du bereits mit dem Thema gut vertraut und kannst dein Wissen sofort testen 
     {{/AT}}
     {{^AT}}
         <div class="oncapflegelinkedcourses collapse" id="Nugget">
-            <h3>Bereit zum Lernen.</h3> 
+            <h5>Bereit zum Lernen.</h3> 
             <p>
             <a href="{{viewurl}}">
             <i class="fa fa-2x fa-book text-primary pr-3"></i>
@@ -80,9 +84,6 @@ Bist du bereits mit dem Thema gut vertraut und kannst dein Wissen sofort testen 
             </p>
         </div>
     {{/AT}}
+{{/courses}}
 
 
-{{/courses}}
-{{^courses}}
-    {{#str}}nolinkedcourses, tool_lp{{/str}}
-{{/courses}}
